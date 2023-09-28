@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Profile-Puguh</title>
+	<link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gray-800 text-gray-500">
+	<header class="z-10 sticky top-0 bg-gray-950 py-5"> <!-- header -->
+		<nav class="w-9/12 flex flex-row mx-auto">
+			<div class="uppercase text-lg basis-1/4"> <!-- logo -->
+				<a href="index.html">
+					<span class="font-extrabold text-white">Puguh</span>
+					<span class="font-extralight text-blue-400">Setiyono</span>
+				</a>
+			</div>
+			<div class="basis-1/2 flex items-center justify-evenly"> <!-- Link -->
+				<a href="index.html"><span>Home</span></a>
+				<a href="profile.html"><span>Profile</span></a>
+				<a href=""><span>Experiences</span></a>
+				<a href="contact.html"><span>Contact</span></a>
+			</div>
+		</nav>
+        <div class="flex flex-row mt-5 space-x-3 justify-end" style="margin-right:100px  ;">
+			<ul>
+				<a href="https://instagram.com/pghstyn_?igshid=NGVhN2U2NjQ0Yg==" target="_blank">
+					<img class="w-6 h-6" src="img/Instagram.svg" alt="Instagram">
+				</a>
+			</ul>
+			<ul>
+				<a href="https://github.com/PuguhSetiyono" target="_blank">
+					<img class="w-6 h-6" src="img/Github-Dark.svg" alt="">
+				</a>
+			</ul>
+			<ul>
+				<a href="https://id.linkedin.com/in/puguh-setiyono-4827aa272?trk=people-guest_people_search-card" target="_blank">
+					<img class="w-6 h-6" src="img/Linkedin.svg" alt="">
+				</a>
+			</ul>
+		</div>
+	</header>
+
+	<main id="utama" class="relative -top-20"> <!-- Main Content -->
+		<div class="bg-gray-950 "> <!-- Hero Section-->
+			<div class="mx-auto flex h-screen items-center w-9/12 "> 
+				<div class="basis-1/2"> <!-- deskripsi -->
+					<div class="flex items-center">
+						<svg class="stroke-gray-400 stroke-2 h-5 w-5">
+							<line x1="0" y1="10px" x2="10px" y2="10px"/>
+						</svg>
+						<h2 class="uppercase text-xs font-extralight introduce">
+							my name is
+						</h2>
+					</div>
+					<h3 class="font-bold text-4xl text-white">
+						<span>Puguh</span>
+						<span class="text-blue-700">Setiyono</span>
+					</h3> <br>
+					<p class="font-serif">
+						I am a Computer Science student at Ganesha University of Education,
+                        interested in Computer Networking and Ethical Hacking.
+					</p> <br>
+                    <span class="border-white border border-solid px-2 py-1 rounded-md text-sm font-mono font-bold text-white">Cyber Security</span>
+                    <span class="border-white border border-solid px-2 py-1 rounded-md text-sm font-mono font-bold text-white">NSE</span>
+				</div>  <!-- avatar -->     
+				<div class="basis-1/2">
+                    <div class="circle">
+                        <img id="gambar-profil" class="mx-auto" src="img/profile.jpg" alt="profile">
+                    </div>
+				</div>
+			</div>
+		</div>
+
+
+        <div id="experiences" class="bg-gray-950 py-40"> <!-- experiences -->
+			<div class="mx-auto w-9/12 flex flex-row items-center">
+				<div class="basis-1/3">
+					<div class="flex flex-col"> <!-- judul -->
+						<div class="flex items-center">
+							<svg class="stroke-gray-400 stroke-2 h-5 w-5">
+								<line x1="0" y1="10px" x2="10px" y2="10px"/>
+							</svg>
+							<h2 class="uppercase text-xs font-extralight introduce">
+								introduce
+							</h2>
+						</div>
+						<h3 class="text-3xl text-white">About Me</h3>
+
+						<div class="flex flex-col gap-y-5 mt-10 pr-20">
+							<a class="hover:bg-blue-200 hover:text-blue-800 flex flex-row justify-between bg-white w-full p-4 rounded-lg" href="#Self-Identity" onclick="showContent('Self-Identity');"><span>Self-Identity</span> > </a>
+							<a class="hover:bg-blue-200 hover:text-blue-800 flex flex-row justify-between bg-white w-full p-4 rounded-lg" href="#Hobby" onclick="showContent('Hobby');"><span>Hobby</span> > </a>
+							<a class="hover:bg-blue-200 hover:text-blue-800 flex flex-row justify-between bg-white w-full p-4 rounded-lg" href="#Organisation-Experience" onclick="showContent('Organisation-Experience');"><span>Organisation-Experience</span> > </a>
+							<a class="hover:bg-blue-200 hover:text-blue-800 flex flex-row justify-between bg-white w-full p-4 rounded-lg" href="#Education" onclick="showContent('Education');"><span>Education</span> > </a>
+						</div>
+					</div>
+
+				</div>
+				<div class="basis-2/3 pl-20">
+					<h4 class="text-2xl font-bold text-gray-200">ALL ABOUT ME</h4>
+					<h5 class="text-sm font-light text-white">Madiun, Jawa Timur</h5>
+					<div class="mt-2">
+						<span class="border-white border border-solid px-2 py-1 rounded-md text-sm font-mono text-white">Single</span>
+					</div>
+					<hr class="my-5">
+					<div id="Self-IdentityContent" class="content">
+						<ul class="list-disc list-inside leading-10">
+							<li>Full Name : Puguh Setiyono</li>
+							<li>
+								Nickname : Puguh
+							</li>
+							<li>Tinggi : 175cm</li>
+							<li>
+								Berat : 74kg
+							</li>
+						</ul>
+					</div>
+					
+					<div id="HobbyContent" class="content">
+						<ul class="list-disc list-inside leading-10">
+							<li>Memiliki Hobby Bermain Game</li>
+							<li>
+								Memiliki Hobby Olahraga
+							</li>
+							<li>Memiliki Hobby Bermain CTF</li>
+							
+						</ul>
+				</div>
+				<div id="Organisation-ExperienceContent" class="content">
+					<ul class="list-disc list-inside leading-10">
+						<li>Panitia PAT Tahun 2022 Divisi SIE SEKRETARIAT</li>
+						<li>
+							Panitia UTECH-INOFEST Tahun 2022 Divisi SIE SEKRETARIAT
+						</li>
+						<li>Bendahara UKM Gateball (Sekarang)</li>
+					</ul>
+				</div>
+				<div id="EducationContent" class="content">
+					<ul class="list-disc list-inside leading-10">
+						<li>UNIVERSITAS PENDIDIKAN GANESHA (2022-Sekarang)</li>
+					</ul>
+			</div>
+			</div>
+			</div>
+		</div>
+		<script src="script.js"></script>
+
+	</main>
+
+	<footer class="bg-white text-center pt-10 pb-10 font-mono -mt-20"> <!-- footer -->
+	     Puguh Setiyono 2023
+	</footer>
+</body>
+</html>
