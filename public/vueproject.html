@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>  
+    <title>Toko Online</title>
+</head>
+
+<body class="bg-slate-950 text-slate-100">
+  <header class="z-10 sticky top-0 bg-gray-950 py-5"> <!-- header -->
+		<nav class="w-9/12 flex flex-row mx-auto">
+			<div class="uppercase text-lg basis-1/4"> <!-- logo -->
+				<a href="index.html">
+					<span class="font-extrabold text-white">Puguh</span>
+					<span class="font-extralight text-blue-400">Setiyono</span>
+				</a>
+			</div>
+			<div class="basis-1/2 flex items-center justify-evenly"> <!-- Link -->
+				<a href="index.html"><span>Home</span></a>
+				<a href="profile.html"><span>Profile</span></a>
+				<a href=""><span>Experiences</span></a>
+				<a href="contact.html"><span>Contact</span></a>
+			</div>
+		</nav>
+		<div class="flex flex-row mt-5 space-x-3 justify-end" style="margin-right:100px  ;">
+			<ul>
+				<a href="https://instagram.com/pghstyn_?igshid=NGVhN2U2NjQ0Yg==" target="_blank">
+					<img class="w-6 h-6" src="img/Instagram.svg" alt="Instagram">
+				</a>
+			</ul>
+			<ul>
+				<a href="https://github.com/PuguhSetiyono" target="_blank">
+					<img class="w-6 h-6" src="img/Github-Dark.svg" alt="">
+				</a>
+			</ul>
+			<ul>
+				<a href="https://id.linkedin.com/in/puguh-setiyono-4827aa272?trk=people-guest_people_search-card" target="_blank">
+					<img class="w-6 h-6" src="img/Linkedin.svg" alt="">
+				</a>
+			</ul>
+		</div>
+	</header>
+
+    <main class="relative -top-32">
+        <div class="flex mx-auto w-5/6 flex-row items-start py-40 text-black">
+            <div id="app" class="container mx-auto h-full">
+                <div class="flex px-6 my-12 h-full">
+                    <div class="px-10">
+                        <h2 class="text-3xl font-bold mb-4 text-white">Daftar Barang</h2>
+                        <div class="grid grid-cols-4 gap-4 items-center">
+                            <div v-for="(product, index) in products" :key="index" class="border p-4 rounded-md">
+                                <div class="relative w-24 h-24 items-center overflow-hidden">
+                                    <img :src="product.image" alt="Product Image" class="absolute top-0 left-0 w-full h-full object-cover">
+                                </div>
+                                <div class="font-semibold py-1 text-white ">{{ product.name }}</div>
+                                <div class="text-white font-semibold py-1">Rp {{ formatNumber(product.price) }}</div>
+                                <button @click="addToCart(product)" class="mt-2 bg-white text-slate-950 py-1 px-4 rounded-lg">Tambah</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="px-10 bg-white rounded-lg py-10">
+                        <h1 class="text-3xl font-bold mb-4">Keranjang</h1>
+                        <div v-if="cart.length === 0">
+                        </div>
+                        <div v-else>
+                            <ul>
+                                <li v-for="(item, index) in cart" :key="index" 
+                                class="border p-4 rounded-md mb-2 flex justify-between items-center">
+                                    <div class="flex items-center">
+                                        <img :src="item.image" alt="Product Image"
+                                            class="mr-2 rounded-md w-16 h-16 object-cover">
+                                        <div class="px-5">
+                                            <div class="font-semibold">{{ item.name }}</div>
+                                            <div class="text-slate-950 font-semibold">Rp {{ formatNumber(item.price) }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="flex items-center">
+                                        <button @click="removeFromCart(index)"
+                                            class="mr-2 bg-slate-950 text-white px-4 rounded-lg">-</button>
+                                        {{ item.quantity }}
+                                        <button @click="addToCart(item, true)"
+                                            class="ml-2 bg-slate-950 text-white px-4 rounded-lg">+</button>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div class="mt-4 font-bold">
+                                    <p>Total</p>
+                                    <p v-if="wallet !== ''">Bayar</p>
+                                    <p v-if="wallet !== '' && wallet >= getTotal()" class="text-white">Kembalian</p>
+                                    <p v-if="wallet !== '' && wallet < getTotal()" class="text-red-500">Dana tidak mencukupi</p>
+                                </div>
+                                <div class="mt-4 font-bold">
+                                    <p>: Rp {{ formatNumber(getTotal()) }}</p>
+                                    <p v-if="wallet !== ''">: Rp {{ formatNumber(wallet) }}</p>
+                                    <p v-if="wallet !== '' && wallet >= getTotal()" class="text-slate-950">: Rp {{ formatNumber(wallet - getTotal()) }}</p>
+                                    <p v-if="wallet !== '' && wallet < getTotal()" class="text-slate-950"></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-center pt-10">
+                            <p class="flex justify-center py-2 px-10 bg-slate-950 text-white rounded-lg">Masukkan Uang</p>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 py-5">
+                            <div v-for="(item, index) in addWallet" :key="index" class="flex items-center justify-center">
+                                <button @click="addAmount(item.amount)" class="bg-slate-950 text-white py-2 px-4 rounded-lg mb-2 w-full">Rp {{ formatNumber(item.amount) }}</button>
+                            </div>
+                            <div class="flex items-center justify-center">
+                                <button @click="resetWallet" class="bg-slate-950 text-white py-2 px-4 rounded-lg mb-2 w-full">Reset</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="bg-white text-center pt-10 pb-10 font-mono -mt-20 text-black"> <!-- footer -->
+      Puguh Setiyono 2023
+    </footer>
+    <script src="./toko-online.js"></script>
+</body>
+
+</html>

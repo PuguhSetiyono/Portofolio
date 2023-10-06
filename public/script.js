@@ -9,3 +9,10 @@ function showContent(contentId) {
         }
     });
 }
+document.querySelector("#clear-all-button").addEventListener("click", function() {
+    clearCart(); // Memanggil fungsi clearCart()
+  });
+
+
+  
+ 
